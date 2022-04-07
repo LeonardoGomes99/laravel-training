@@ -1,6 +1,7 @@
 <?php
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
+
 use App\Models\Book;
 use App\Models\Suggestion;
 use Faker\Generator as Faker;

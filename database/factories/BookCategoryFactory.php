@@ -1,6 +1,7 @@
 <?php
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
+
 use App\Models\Book;
 use App\Models\Category;
 use App\Models\BookCategory;
