@@ -1,24 +1,22 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Comment extends Model
+class Tag extends Model
 {
-    use HasFactory;
-
     public $timestamps = false;
-    protected $table = 'comments';
+    protected $table = 'tag';
     public $incrementing = false;
     protected $primaryKey = 'id';
     protected $fillable = [
         'book_id',
-        'comment'
+        'tag'
     ];
 
     public function book()
     {
-        return $this->belongsTo(Book::class);
+        return $this->belongsTo(Book::class, 'book_id' , 'id');
     }
 }

@@ -11,6 +11,6 @@ class SuggestionSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(Suggestion::class)->count()->create();
     }
 }

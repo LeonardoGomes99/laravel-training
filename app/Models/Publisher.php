@@ -1,13 +1,11 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Publisher extends Model
-{
-    use HasFactory;
-    
+{    
     public $timestamps = false;
     protected $table = 'publisher';
     public $incrementing = false;
@@ -17,6 +15,6 @@ class Publisher extends Model
     ];
 
     public function book(){
-        return $this->hasMany(Book::class);
+        return $this->hasMany(Book::class, 'book_id' , 'id');
     }
 }

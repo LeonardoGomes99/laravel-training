@@ -2,8 +2,15 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use App\Models\Tag;
 use Tests\TestCase;
+use App\Models\Book;
+use App\Models\Comment;
+use App\Models\Category;
+use App\Models\Publisher;
+use App\Models\Suggestion;
+use App\Models\BookCategory;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ExampleTest extends TestCase
 {
@@ -14,8 +21,7 @@ class ExampleTest extends TestCase
      */
     public function testBasicTest()
     {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
+        $test = factory(Tag::class)->create();
+        dd($test);
     }
 }

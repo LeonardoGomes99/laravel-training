@@ -1,13 +1,11 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    use HasFactory;
-
     public $timestamps = false;
     protected $table = 'categories';
     public $incrementing = false;
@@ -18,7 +16,7 @@ class Category extends Model
 
     public function bookCategories()
     {
-        return $this->hasMany(BookCategory::class);
+        return $this->hasMany(BookCategory::class, 'category_id' , 'id');
     }
 
     //O nome do livro "era uma vez" categoria : suspense

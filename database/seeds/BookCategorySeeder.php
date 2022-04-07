@@ -11,6 +11,6 @@ class BookCategorySeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(BookCategory::class)->count()->create();
     }
 }
