@@ -13,7 +13,7 @@ class TagTest extends TestCase
     /**
      * Verifica o relacionamento da Tag com o Book
      */
-    public function testRelationshipCommentAndBook()
+    public function testRelationshipTagAndBook()
     {
         $tag = factory(Tag::class)->create();
         $this->assertInstanceOf(
