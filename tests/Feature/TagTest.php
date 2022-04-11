@@ -2,21 +2,23 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use App\Models\Tag;
+use App\Models\Book;
+use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class TagTest extends TestCase
 {
     /**
-     * A basic feature test example.
-     *
-     * @return void
+     * Verifica o relacionamento da Tag com o Book
      */
-    public function testExample()
+    public function testRelationshipCommentAndBook()
     {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
+        $tag = factory(Tag::class)->create();
+        $this->assertInstanceOf(
+            Book::class,
+            $tag->book->first()
+        );
     }
 }

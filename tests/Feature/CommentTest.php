@@ -2,21 +2,24 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use App\Models\Book;
+use App\Models\Comment;
+use Illuminate\Support\Collection;
+use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class CommentTest extends TestCase
 {
     /**
-     * A basic feature test example.
-     *
-     * @return void
+     * Verifica o relacionamento do Comment com o Book
      */
-    public function testExample()
+    public function testRelationshipCommentAndBook()
     {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
+        $comment = factory(Comment::class)->create();
+        $this->assertInstanceOf(
+            Book::class,
+            $comment->book->first()
+        );
     }
 }

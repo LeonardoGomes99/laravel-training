@@ -2,21 +2,24 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use App\Models\Book;
+use App\Models\Publisher;
+use Illuminate\Support\Collection;
+use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class PublisherTest extends TestCase
 {
     /**
-     * A basic feature test example.
-     *
-     * @return void
+     * Verifica o relacionamento do Publisher com o Book
      */
-    public function testExample()
+    public function testRelationshipPublisherAndBook()
     {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
+        $publisher = factory(Publisher::class)->create();
+        $this->assertInstanceOf(
+            Collection::class,
+            $publisher->book
+        );
     }
 }

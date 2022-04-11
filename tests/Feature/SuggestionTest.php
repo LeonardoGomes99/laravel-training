@@ -2,21 +2,23 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use App\Models\Book;
+use App\Models\Suggestion;
+use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class SuggestionTest extends TestCase
 {
     /**
-     * A basic feature test example.
-     *
-     * @return void
+     * Verifica o relacionamento do Suggestion com o Book
      */
-    public function testExample()
+    public function testRelationshipSuggestionAndBook()
     {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
+        $suggestion = factory(Suggestion::class)->create();
+        $this->assertInstanceOf(
+            Book::class,
+            $suggestion->book->first()
+        );
     }
 }
