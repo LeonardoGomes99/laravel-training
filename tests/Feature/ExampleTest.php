@@ -22,6 +22,5 @@ class ExampleTest extends TestCase
     public function testBasicTest()
     {
         $test = factory(Tag::class)->create();
-        dd($test);
     }
 }

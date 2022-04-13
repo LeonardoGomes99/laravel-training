@@ -3,13 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Publisher extends Model
-{    
-    /**
-     * @var boolean
-     */
-    public $timestamps = false;
+{
+    use SoftDeletes;
 
     /**
      * @var boolean
@@ -25,13 +23,14 @@ class Publisher extends Model
      * @var array
      */
     protected $fillable = [
-        'publisher_name'
+        'publisher_name',
     ];
 
     /**
      * Relaciomaneto do Publisher com o Book
      */
-    public function book(){
+    public function book()
+    {
         return $this->hasMany(Book::class, 'book_id' , 'id');
     }
 }

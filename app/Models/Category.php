@@ -3,13 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Category extends Model
 {
-    /**
-     * @var boolean
-     */
-    public $timestamps = false;
+    use SoftDeletes;
 
     /**
      * @var boolean
@@ -20,12 +18,12 @@ class Category extends Model
      * @var string
      */
     protected $primaryKey = 'id';
-    
+
     /**
      * @var array
      */
     protected $fillable = [
-        'category_name'
+        'category_name',
     ];
 
     /**
@@ -33,10 +31,6 @@ class Category extends Model
      */
     public function bookCategories()
     {
-        return $this->hasMany(BookCategory::class, 'category_id' , 'id');
+        return $this->hasMany(BookCategory::class, 'category_id', 'id');
     }
-
-    //O nome do livro "era uma vez" categoria : suspense
-    //O nome do livro "era uma vez" categoria : terror
-    //O nome do livro "a casa de cera" categoria : terror
 }

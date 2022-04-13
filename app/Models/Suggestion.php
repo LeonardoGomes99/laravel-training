@@ -3,13 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Suggestion extends Model
 {
-    /**
-     * @var boolean
-     */
-    public $timestamps = false;
+    use SoftDeletes;
 
     /**
      * @var boolean
@@ -26,7 +24,7 @@ class Suggestion extends Model
      */
     protected $fillable = [
         'book_id',
-        'suggestion'
+        'suggestion',
     ];
 
     /**

@@ -3,13 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Book extends Model
 {
-    /**
-     * @var boolean
-     */
-    public $timestamps = false;
+    use SoftDeletes;
 
     /**
      * @var boolean
@@ -20,13 +18,13 @@ class Book extends Model
      * @var string
      */
     protected $primaryKey = 'id';
-    
+
     /**
      * @var array
      */
     protected $fillable = [
         'publisher_id',
-        'book_name'
+        'book_name',
     ];
 
     /**
@@ -34,7 +32,7 @@ class Book extends Model
      */
     public function publisher()
     {
-        return $this->belongsTo(Publisher::class, 'publisher_id' , 'id');
+        return $this->belongsTo(Publisher::class, 'publisher_id', 'id');
     }
 
     /**
@@ -42,30 +40,30 @@ class Book extends Model
      */
     public function bookCategories()
     {
-        return $this->hasMany(BookCategory::class, 'book_id' , 'id');
+        return $this->hasMany(BookCategory::class, 'book_id', 'id');
     }
 
     /**
      * Relacionamento do Book com o Comment
      */
-    public function comments(){
-        return $this->hasMany(Comment::class, 'book_id' , 'id');
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'book_id', 'id');
     }
 
-    
     /**
      * Relacionamento do Book com o Suggestion
      */
-    public function suggestions(){
-        return $this->hasMany(Suggestion::class, 'book_id' , 'id');
+    public function suggestions()
+    {
+        return $this->hasMany(Suggestion::class, 'book_id', 'id');
     }
 
-    
     /**
      * Relacionamento do Book com a Tag
      */
     public function tags()
     {
-        return $this->hasMany(Tag::class, 'book_id' , 'id');
+        return $this->hasMany(Tag::class, 'book_id', 'id');
     }
 }
