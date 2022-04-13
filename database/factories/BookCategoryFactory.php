@@ -11,6 +11,6 @@ $factory->define(BookCategory::class, function (Faker $faker) {
     return [
         'id'          => $this->faker->uuid(),
         'book_id'     => factory(Book::class),
-        'category_id' => factory(Category::class)
+        'category_id' => factory(Category::class),
     ];
 });

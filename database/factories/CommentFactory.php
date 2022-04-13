@@ -10,6 +10,6 @@ $factory->define(Comment::class, function (Faker $faker) {
     return [
         'id'       => $this->faker->uuid(),
         'book_id'  => factory(Book::class),
-        'comment'  => $this->faker->text(10)
+        'comment'  => $this->faker->text(10),
     ];
 });

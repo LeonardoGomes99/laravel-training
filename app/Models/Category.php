@@ -6,14 +6,31 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
+    /**
+     * @var boolean
+     */
     public $timestamps = false;
-    protected $table = 'categories';
+
+    /**
+     * @var boolean
+     */
     public $incrementing = false;
+
+    /**
+     * @var string
+     */
     protected $primaryKey = 'id';
+    
+    /**
+     * @var array
+     */
     protected $fillable = [
         'category_name'
     ];
 
+    /**
+     * Relaciomaneto do Category com BookCategory
+     */
     public function bookCategories()
     {
         return $this->hasMany(BookCategory::class, 'category_id' , 'id');

@@ -13,19 +13,19 @@ class DbAll extends Migration
      */
     public function up()
     {
-        Schema::create('publisher', function (Blueprint $table) {
+        Schema::create('publishers', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('publisher_name');
         });
 
-        Schema::create('book', function (Blueprint $table) {
+        Schema::create('books', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->uuid('publisher_id');
             $table->string('book_name');
 
             $table->foreign('publisher_id')
             ->references('id')
-            ->on('publisher')
+            ->on('publishers')
             ->onDelete('cascade');
         });
 
@@ -41,7 +41,7 @@ class DbAll extends Migration
 
             $table->foreign('book_id')
             ->references('id')
-            ->on('book')
+            ->on('books')
             ->onDelete('cascade');
 
             $table->foreign('category_id')
@@ -57,18 +57,18 @@ class DbAll extends Migration
 
             $table->foreign('book_id')
             ->references('id')
-            ->on('book')
+            ->on('books')
             ->onDelete('cascade');
         });
 
-        Schema::create('tag', function (Blueprint $table) {
+        Schema::create('tags', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->uuid('book_id');
             $table->string('tag');
 
             $table->foreign('book_id')
             ->references('id')
-            ->on('book')
+            ->on('books')
             ->onDelete('cascade');
         });
 
@@ -79,7 +79,7 @@ class DbAll extends Migration
 
             $table->foreign('book_id')
             ->references('id')
-            ->on('book')
+            ->on('books')
             ->onDelete('cascade');
         });
     }
