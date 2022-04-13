@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Publisher::class, function (Faker $faker) {
     return [
-        'id'                => $this->faker->uuid(),
-        'publisher_name'    => $this->faker->text(50),
+        'id'             => $this->faker->uuid(),
+        'publisher_name' => $this->faker->text(50),
     ];
 });

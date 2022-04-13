@@ -8,8 +8,8 @@ use Faker\Generator as Faker;
 
 $factory->define(Comment::class, function (Faker $faker) {
     return [
-        'id'       => $this->faker->uuid(),
-        'book_id'  => factory(Book::class),
-        'comment'  => $this->faker->text(10),
+        'id'      => $this->faker->uuid(),
+        'book_id' => factory(Book::class),
+        'comment' => $this->faker->text(10),
     ];
 });
