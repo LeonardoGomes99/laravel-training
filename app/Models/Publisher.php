@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
+use App\Models\Traits\UuidAsPrimaryKey;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Publisher extends Model
 {
+    use UuidAsPrimaryKey;
     use SoftDeletes;
 
     /**
@@ -20,6 +22,11 @@ class Publisher extends Model
     protected $primaryKey = 'id';
 
     /**
+     * @var string
+     */
+    protected $table = 'publishers';
+
+    /**
      * @var array
      */
     protected $fillable = [
@@ -29,7 +36,7 @@ class Publisher extends Model
     /**
      * Relacionamento do Publisher com o Book
      */
-    public function book()
+    public function books()
     {
         return $this->hasMany(Book::class, 'book_id' , 'id');
     }
