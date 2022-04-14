@@ -28,7 +28,7 @@ class Comment extends Model
     ];
 
     /**
-     * Relaciomaneto do Comment com o Book
+     * Relacionamento do Comment com o Book
      */
     public function book()
     {

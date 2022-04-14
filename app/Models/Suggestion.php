@@ -28,7 +28,7 @@ class Suggestion extends Model
     ];
 
     /**
-     * Relaciomaneto do Suggestion com o Book
+     * Relacionamento do Suggestion com o Book
      */
     public function book()
     {

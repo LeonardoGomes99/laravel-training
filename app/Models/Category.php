@@ -20,6 +20,11 @@ class Category extends Model
     protected $primaryKey = 'id';
 
     /**
+     * @var string
+     */
+    protected $table = 'categories';
+
+    /**
      * @var array
      */
     protected $fillable = [
@@ -27,9 +32,9 @@ class Category extends Model
     ];
 
     /**
-     * Relaciomaneto do Category com BookCategory
+     * Relacionamento do Category com BookCategory
      */
-    public function bookCategories()
+    public function booksCategories()
     {
         return $this->hasMany(BookCategory::class, 'category_id', 'id');
     }

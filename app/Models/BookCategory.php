@@ -20,6 +20,11 @@ class BookCategory extends Model
     protected $primaryKey = 'id';
 
     /**
+     * @var string
+     */
+    protected $table = 'books_categories';
+
+    /**
      * @var array
      */
     protected $fillable = [

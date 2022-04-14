@@ -27,7 +27,7 @@ class Publisher extends Model
     ];
 
     /**
-     * Relaciomaneto do Publisher com o Book
+     * Relacionamento do Publisher com o Book
      */
     public function book()
     {

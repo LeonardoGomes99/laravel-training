@@ -38,7 +38,7 @@ class Book extends Model
     /**
      * Relacionamento do Book com o BookCategory
      */
-    public function bookCategories()
+    public function booksCategories()
     {
         return $this->hasMany(BookCategory::class, 'book_id', 'id');
     }
