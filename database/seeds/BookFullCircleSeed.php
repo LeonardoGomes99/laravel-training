@@ -12,7 +12,7 @@ use Illuminate\Database\Seeder;
 class BookFullCircleSeed extends Seeder
 {
     /**
-     * Run the database seeds.
+     * Ciclo completo de criação de um livro
      *
      * @return void
      */
@@ -21,13 +21,11 @@ class BookFullCircleSeed extends Seeder
         $publisher = factory(Publisher::class)->create();
         factory(Book::class)->create(['publisher_id' => $publisher->id])->each(function ($book) {
 
-            //Aqui tem 3 categorias, pra vincular as 3 ao BookCategories, vai ser necessário um laço
-            $categories = factory(Category::class, 3)->create();
+            $category = factory(Category::class)->create();
 
-            //Tipo, jogar esse trecho dentro de um foreach pra criar os vínculos
             factory(BookCategory::class)->create([
                 'book_id'     => $book->id,
-                'category_id' => $categories->id,
+                'category_id' => $category->id,
             ]);
 
             factory(Comment::class)->create(['book_id' => $book->id,]);
