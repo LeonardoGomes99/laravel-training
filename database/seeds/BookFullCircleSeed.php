@@ -18,16 +18,21 @@ class BookFullCircleSeed extends Seeder
      */
     public function run()
     {
-        factory(Publisher::class)->create();
-        $book = factory(Book::class)->create();
-        factory(Category::class, 3)->create()->each(function ($category) use ($book) {
+        $publisher = factory(Publisher::class)->create();
+        factory(Book::class)->create(['publisher_id' => $publisher->id])->each(function ($book) {
+
+            //Aqui tem 3 categorias, pra vincular as 3 ao BookCategories, vai ser necessário um laço
+            $categories = factory(Category::class, 3)->create();
+
+            //Tipo, jogar esse trecho dentro de um foreach pra criar os vínculos
             factory(BookCategory::class)->create([
                 'book_id'     => $book->id,
-                'category_id' => $category->id,
+                'category_id' => $categories->id,
             ]);
+
+            factory(Comment::class)->create(['book_id' => $book->id,]);
+            factory(Suggestion::class)->create(['book_id' => $book->id,]);
+            factory(Tag::class)->create(['book_id' => $book->id,]);
         });
-        factory(Comment::class)->create(['book_id' => $book->id,]);
-        factory(Suggestion::class)->create(['book_id' => $book->id,]);
-        factory(Tag::class)->create(['book_id' => $book->id,]);
     }
 }

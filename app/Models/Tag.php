@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Tag extends Model
 {
-    use UuidAsPrimaryKey;
     use SoftDeletes;
+    use UuidAsPrimaryKey;
 
     /**
      * @var boolean

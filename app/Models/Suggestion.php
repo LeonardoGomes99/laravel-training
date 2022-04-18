@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Suggestion extends Model
 {
-    use UuidAsPrimaryKey;
     use SoftDeletes;
+    use UuidAsPrimaryKey;
 
     /**
      * @var boolean
