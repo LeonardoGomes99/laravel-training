@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class BookCategorySeeder extends Seeder
+class DatabaseSeed extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,6 @@ class BookCategorySeeder extends Seeder
      */
     public function run()
     {
-        //
+        $this->call(BookFullCircleSeed::class);
     }
 }
