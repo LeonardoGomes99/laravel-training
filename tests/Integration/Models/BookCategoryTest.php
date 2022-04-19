@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Integration\Models;
 
 use Tests\TestCase;
 use App\Models\Book;
@@ -16,10 +16,13 @@ class BookCategoryTest extends TestCase
      */
     public function testRelationshipBookCategoryAndBook()
     {
-        $bookCategory = factory(BookCategory::class)->create();
+        $book = factory(Book::class)->create();
+        $bookCategory = factory(BookCategory::class)->create([
+            'book_id' => $book->id
+        ]);
         $this->assertInstanceOf(
             Book::class,
-            $bookCategory->book->first()
+            $bookCategory->book
         );
     }
 
@@ -28,10 +31,13 @@ class BookCategoryTest extends TestCase
      */
     public function testRelationshipBookCategoryAndCategoty()
     {
-        $bookCategory = factory(BookCategory::class)->create();
+        $category = factory(Category::class)->create();
+        $bookCategory = factory(BookCategory::class)->create([
+            'category_id' => $category->id
+        ]);
         $this->assertInstanceOf(
             Category::class,
-            $bookCategory->categories->first()
+            $bookCategory->category
         );
     }
 }

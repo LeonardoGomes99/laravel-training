@@ -2,24 +2,42 @@
 
 namespace App\Models;
 
+use App\Models\Traits\UuidAsPrimaryKey;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Category extends Model
 {
-    public $timestamps = false;
-    protected $table = 'categories';
+    use SoftDeletes;
+    use UuidAsPrimaryKey;
+
+    /**
+     * @var boolean
+     */
     public $incrementing = false;
+
+    /**
+     * @var string
+     */
     protected $primaryKey = 'id';
+
+    /**
+     * @var string
+     */
+    protected $table = 'categories';
+
+    /**
+     * @var array
+     */
     protected $fillable = [
-        'category_name'
+        'category_name',
     ];
 
-    public function bookCategories()
+    /**
+     * Relacionamento do Category com BookCategory
+     */
+    public function booksCategories()
     {
-        return $this->hasMany(BookCategory::class, 'category_id' , 'id');
+        return $this->hasMany(BookCategory::class, 'category_id', 'id');
     }
-
-    //O nome do livro "era uma vez" categoria : suspense
-    //O nome do livro "era uma vez" categoria : terror
-    //O nome do livro "a casa de cera" categoria : terror
 }

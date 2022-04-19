@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Integration\Models;
 
 use Tests\TestCase;
 use App\Models\Category;
@@ -17,9 +17,12 @@ class CategoryTest extends TestCase
     public function testRelationshipCategoryAndBookCategory()
     {
         $category = factory(Category::class)->create();
+        $bookCategories = factory(BookCategory::class)->create([
+            'category_id' => $category->id
+        ]);
         $this->assertInstanceOf(
             Collection::class,
-            $category->bookCategories
+            $category->booksCategories
         );
     }
 }

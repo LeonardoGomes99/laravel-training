@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Integration\Models;
 
 use Tests\TestCase;
 use App\Models\Tag;
@@ -18,7 +18,7 @@ class TagTest extends TestCase
         $tag = factory(Tag::class)->create();
         $this->assertInstanceOf(
             Book::class,
-            $tag->book->first()
+            $tag->book
         );
     }
 }

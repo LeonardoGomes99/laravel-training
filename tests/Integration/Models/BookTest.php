@@ -1,10 +1,14 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Integration\Models;
 
 use Tests\TestCase;
+use App\Models\Tag;
 use App\Models\Book;
+use App\Models\BookCategory;
+use App\Models\Comment;
 use App\Models\Publisher;
+use App\Models\Suggestion;
 use Illuminate\Support\Collection;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -30,9 +34,12 @@ class BookTest extends TestCase
     public function testRelationshipBookAndBookCategory()
     {
         $book = factory(Book::class)->create();
+        $bookCategories = factory(BookCategory::class)->create([
+            'book_id' => $book->id
+        ]);
         $this->assertInstanceOf(
             Collection::class,
-            $book->bookCategories
+            $book->booksCategories
         );
     }
 
@@ -42,6 +49,8 @@ class BookTest extends TestCase
     public function testRelationshipBookAndComment()
     {
         $book = factory(Book::class)->create();
+        $comments = factory(Book::class)->create();
+
         $this->assertInstanceOf(
             Collection::class,
             $book->comments
@@ -54,6 +63,9 @@ class BookTest extends TestCase
     public function testRelationshipBookAndSuggestion()
     {
         $book = factory(Book::class)->create();
+        $suggestions = factory(Suggestion::class,3)->create([
+            'book_id' => $book->id
+        ]);
         $this->assertInstanceOf(
             Collection::class,
             $book->suggestions
@@ -66,6 +78,9 @@ class BookTest extends TestCase
     public function testRelationshipBookAndTag()
     {
         $book = factory(Book::class)->create();
+        $tags = factory(Tag::class, 3)->create([
+            'book_id' => $book->id
+        ]);
         $this->assertInstanceOf(
             Collection::class,
             $book->tags

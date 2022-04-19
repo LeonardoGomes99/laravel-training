@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Integration\Models;
 
 use Tests\TestCase;
 use App\Models\Book;
@@ -19,7 +19,7 @@ class PublisherTest extends TestCase
         $publisher = factory(Publisher::class)->create();
         $this->assertInstanceOf(
             Collection::class,
-            $publisher->book
+            $publisher->books
         );
     }
 }
