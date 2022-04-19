@@ -3,9 +3,11 @@
 namespace Tests;
 
 use Illuminate\Contracts\Console\Kernel;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 trait CreatesApplication
 {
+    use DatabaseTransactions;
     /**
      * Creates the application.
      *
