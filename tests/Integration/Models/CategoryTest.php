@@ -20,9 +20,14 @@ class CategoryTest extends TestCase
         $bookCategories = factory(BookCategory::class)->create([
             'category_id' => $category->id
         ]);
+
         $this->assertInstanceOf(
             Collection::class,
             $category->booksCategories
+        );
+        $this->assertInstanceOf(
+            BookCategory::class,
+            $category->booksCategories->first()
         );
     }
 }

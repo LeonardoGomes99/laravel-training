@@ -20,9 +20,14 @@ class PublisherTest extends TestCase
         $books = factory(Book::class)->create([
             'publisher_id' => $publisher->id
         ]);
+
         $this->assertInstanceOf(
             Collection::class,
             $publisher->books
+        );
+        $this->assertInstanceOf(
+            Book::class,
+            $publisher->books->first()
         );
     }
 }

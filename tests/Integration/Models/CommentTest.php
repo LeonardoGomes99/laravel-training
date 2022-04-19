@@ -19,7 +19,7 @@ class CommentTest extends TestCase
         $comment = factory(Comment::class)->create();
         $this->assertInstanceOf(
             Book::class,
-            $comment->book->first()
+            $comment->book
         );
     }
 }

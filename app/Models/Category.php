@@ -34,6 +34,23 @@ class Category extends Model
     ];
 
     /**
+     * @var array
+     */
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'deleted_at',
+    ];
+
+    /**
+     * @var array
+     */
+    protected $casts = [
+        'id' => 'string',
+        'category_name' => 'string',
+    ];
+
+    /**
      * Relacionamento do Category com BookCategory
      */
     public function booksCategories()

@@ -22,8 +22,7 @@ class Books extends Migration
 
             $table->foreign('publisher_id')
                 ->references('id')
-                ->on('publishers')
-                ->onDelete('cascade');
+                ->on('publishers');
         });
     }
 

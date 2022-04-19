@@ -2,16 +2,18 @@
 
 namespace Tests\Integration\Models;
 
-use Tests\TestCase;
 use App\Models\Tag;
+use Tests\TestCase;
 use App\Models\Book;
-use App\Models\BookCategory;
 use App\Models\Comment;
+use App\Models\Category;
 use App\Models\Publisher;
 use App\Models\Suggestion;
+use App\Models\BookCategory;
 use Illuminate\Support\Collection;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 
 class BookTest extends TestCase
@@ -21,10 +23,18 @@ class BookTest extends TestCase
      */
     public function testRelationshipBookAndPublisher()
     {
-        $book = factory(Book::class)->create();
+        $publisher = factory(Publisher::class)->create();
+        $book = factory(Book::class)->create([
+            'publisher_id' => $publisher->id
+        ]);
+
         $this->assertInstanceOf(
             Publisher::class,
-            $book->publisher->first()
+            $book->publisher
+        );
+        $this->assertEquals(
+            $publisher->id,
+            $book->publisher->id
         );
     }
 
@@ -34,12 +44,19 @@ class BookTest extends TestCase
     public function testRelationshipBookAndBookCategory()
     {
         $book = factory(Book::class)->create();
-        $bookCategories = factory(BookCategory::class)->create([
-            'book_id' => $book->id
+        $category = factory(Category::class)->create();
+        $booksCategories = factory(BookCategory::class)->create([
+            'book_id' => $book->id,
+            'category_id' => $category->id
         ]);
+
         $this->assertInstanceOf(
             Collection::class,
             $book->booksCategories
+        );
+        $this->assertInstanceOf(
+            BookCategory::class,
+            $book->booksCategories->first()
         );
     }
 
@@ -49,11 +66,17 @@ class BookTest extends TestCase
     public function testRelationshipBookAndComment()
     {
         $book = factory(Book::class)->create();
-        $comments = factory(Book::class)->create();
+        factory(Comment::class,3)->create([
+            'book_id' => $book->id
+        ]);
 
         $this->assertInstanceOf(
             Collection::class,
             $book->comments
+        );
+        $this->assertInstanceOf(
+            Comment::class,
+            $book->comments->first()
         );
     }
 
@@ -63,12 +86,17 @@ class BookTest extends TestCase
     public function testRelationshipBookAndSuggestion()
     {
         $book = factory(Book::class)->create();
-        $suggestions = factory(Suggestion::class,3)->create([
+        factory(Suggestion::class,3)->create([
             'book_id' => $book->id
         ]);
+
         $this->assertInstanceOf(
             Collection::class,
             $book->suggestions
+        );
+        $this->assertInstanceOf(
+            Suggestion::class,
+            $book->suggestions->first()
         );
     }
 
@@ -78,12 +106,17 @@ class BookTest extends TestCase
     public function testRelationshipBookAndTag()
     {
         $book = factory(Book::class)->create();
-        $tags = factory(Tag::class, 3)->create([
+        factory(Tag::class, 3)->create([
             'book_id' => $book->id
         ]);
+
         $this->assertInstanceOf(
             Collection::class,
             $book->tags
+        );
+        $this->assertInstanceOf(
+            Tag::class,
+            $book->tags->first()
         );
     }
 }

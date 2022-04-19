@@ -20,6 +20,7 @@ class BookCategoryTest extends TestCase
         $bookCategory = factory(BookCategory::class)->create([
             'book_id' => $book->id
         ]);
+
         $this->assertInstanceOf(
             Book::class,
             $bookCategory->book
@@ -35,6 +36,7 @@ class BookCategoryTest extends TestCase
         $bookCategory = factory(BookCategory::class)->create([
             'category_id' => $category->id
         ]);
+
         $this->assertInstanceOf(
             Category::class,
             $bookCategory->category

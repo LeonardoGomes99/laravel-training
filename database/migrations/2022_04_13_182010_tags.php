@@ -22,8 +22,7 @@ class Tags extends Migration
 
             $table->foreign('book_id')
                 ->references('id')
-                ->on('books')
-                ->onDelete('cascade');
+                ->on('books');
         });
     }
 
