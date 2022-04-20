@@ -15,7 +15,7 @@ class PublisherTest extends TestCase
     public function testRelationshipPublisherAndBook()
     {
         $publisher = factory(Publisher::class)->create();
-        $books = factory(Book::class)->create([
+        factory(Book::class)->create([
             'publisher_id' => $publisher->id
         ]);
 

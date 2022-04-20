@@ -41,7 +41,7 @@ class BookTest extends TestCase
     {
         $book = factory(Book::class)->create();
         $category = factory(Category::class)->create();
-        $booksCategories = factory(BookCategory::class)->create([
+        factory(BookCategory::class)->create([
             'book_id' => $book->id,
             'category_id' => $category->id
         ]);

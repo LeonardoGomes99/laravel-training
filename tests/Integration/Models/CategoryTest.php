@@ -15,7 +15,7 @@ class CategoryTest extends TestCase
     public function testRelationshipCategoryAndBookCategory()
     {
         $category = factory(Category::class)->create();
-        $bookCategories = factory(BookCategory::class)->create([
+        factory(BookCategory::class)->create([
             'category_id' => $category->id
         ]);
 
