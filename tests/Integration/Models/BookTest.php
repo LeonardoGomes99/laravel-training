@@ -62,7 +62,7 @@ class BookTest extends TestCase
     public function testRelationshipBookAndComment()
     {
         $book = factory(Book::class)->create();
-        factory(Comment::class,3)->create([
+        factory(Comment::class, 3)->create([
             'book_id' => $book->id
         ]);
 
@@ -82,7 +82,7 @@ class BookTest extends TestCase
     public function testRelationshipBookAndSuggestion()
     {
         $book = factory(Book::class)->create();
-        factory(Suggestion::class,3)->create([
+        factory(Suggestion::class, 3)->create([
             'book_id' => $book->id
         ]);
 

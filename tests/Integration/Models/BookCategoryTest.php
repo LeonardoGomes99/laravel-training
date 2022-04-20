@@ -9,7 +9,7 @@ use App\Models\BookCategory;
 
 class BookCategoryTest extends TestCase
 {
-     /**
+    /**
      * Verifica o relacionamento do BookCategory com o Book
      */
     public function testRelationshipBookCategoryAndBook()
