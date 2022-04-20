@@ -47,8 +47,8 @@ class Suggestion extends Model
      * @var array
      */
     protected $casts = [
-        'id' => 'string',
-        'book_id' => 'string',
+        'id'         => 'string',
+        'book_id'    => 'string',
         'suggestion' => 'string',
     ];
 

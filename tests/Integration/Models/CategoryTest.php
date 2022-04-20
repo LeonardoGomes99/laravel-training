@@ -6,8 +6,6 @@ use Tests\TestCase;
 use App\Models\Category;
 use App\Models\BookCategory;
 use Illuminate\Support\Collection;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 
 class CategoryTest extends TestCase
 {

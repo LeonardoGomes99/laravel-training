@@ -46,7 +46,7 @@ class Publisher extends Model
      * @var array
      */
     protected $casts = [
-        'id' => 'string',
+        'id'             => 'string',
         'publisher_name' => 'string',
     ];
 

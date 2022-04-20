@@ -11,10 +11,6 @@ use App\Models\Publisher;
 use App\Models\Suggestion;
 use App\Models\BookCategory;
 use Illuminate\Support\Collection;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
-
 
 class BookTest extends TestCase
 {

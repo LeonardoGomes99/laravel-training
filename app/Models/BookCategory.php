@@ -47,8 +47,8 @@ class BookCategory extends Model
      * @var array
      */
     protected $casts = [
-        'id' => 'string',
-        'book_id' => 'string',
+        'id'          => 'string',
+        'book_id'     => 'string',
         'category_id' => 'string',
     ];
 

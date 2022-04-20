@@ -47,9 +47,9 @@ class Tag extends Model
      * @var array
      */
     protected $casts = [
-        'id' => 'string',
+        'id'      => 'string',
         'book_id' => 'string',
-        'tag' => 'string',
+        'tag'     => 'string',
     ];
 
     /**

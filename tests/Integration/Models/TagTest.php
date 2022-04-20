@@ -5,8 +5,6 @@ namespace Tests\Integration\Models;
 use Tests\TestCase;
 use App\Models\Tag;
 use App\Models\Book;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class TagTest extends TestCase
 {
