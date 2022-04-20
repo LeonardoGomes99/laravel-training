@@ -9,7 +9,7 @@ use Faker\Generator as Faker;
 $factory->define(Suggestion::class, function (Faker $faker) {
     return [
         'id'         => $this->faker->uuid(),
-        'book_id'    => factory(Book::class), 
+        'book_id'    => factory(Book::class),
         'suggestion' => $this->faker->text(),
     ];
 });
