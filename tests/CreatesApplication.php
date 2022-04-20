@@ -8,6 +8,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 trait CreatesApplication
 {
     use DatabaseTransactions;
+
     /**
      * Creates the application.
      *
