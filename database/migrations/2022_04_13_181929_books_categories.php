@@ -22,8 +22,7 @@ class BooksCategories extends Migration
 
             $table->foreign('book_id')
                 ->references('id')
-                ->on('books')
-                ->onDelete('cascade');
+                ->on('books');
 
             $table->foreign('category_id')
                 ->references('id')

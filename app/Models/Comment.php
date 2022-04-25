@@ -35,10 +35,28 @@ class Comment extends Model
     ];
 
     /**
+     * @var array
+     */
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'deleted_at',
+    ];
+
+    /**
+     * @var array
+     */
+    protected $casts = [
+        'id'      => 'string',
+        'book_id' => 'string',
+        'comment' => 'string',
+    ];
+
+    /**
      * Relacionamento do Comment com o Book
      */
     public function book()
     {
-        return $this->belongsTo(Book::class, 'book_id' , 'id');
+        return $this->belongsTo(Book::class, 'book_id', 'id');
     }
 }

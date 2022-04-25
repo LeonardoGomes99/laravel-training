@@ -35,10 +35,28 @@ class Tag extends Model
     ];
 
     /**
+     * @var array
+     */
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'deleted_at',
+    ];
+
+    /**
+     * @var array
+     */
+    protected $casts = [
+        'id'      => 'string',
+        'book_id' => 'string',
+        'tag'     => 'string',
+    ];
+
+    /**
      * Relacionamento da Tag e Book
      */
     public function book()
     {
-        return $this->belongsTo(Book::class, 'book_id' , 'id');
+        return $this->belongsTo(Book::class, 'book_id', 'id');
     }
 }
